@@ -1,0 +1,69 @@
+﻿@page "/account/login"
+@inject MessageService _message
+
+@using Wings.Saas.Client.Areas.Account.Shared
+@using Wings.Saas.Shared.Areas.Account.Dtos;
+@using Wings.Saas.Shared.Areas.Account.Services;
+@using System.ComponentModel.DataAnnotations;
+@inject NavigationManager _navigationManager
+@inject AccountService AccountService;
+@using System.Text.Json;
+@layout AccountLayout
+
+
+    <Form Model="@model"
+          LabelCol="new ColLayoutParam { Span = 8 }"
+          WrapperCol="new ColLayoutParam { Span = 16 }"
+          OnFinish="OnFinish"
+          OnFinishFailed="OnFinishFailed">
+        <FormItem Label="Username">
+            <Input @bind-Value="@context.UserName" />
+        </FormItem>
+        <FormItem Label="Password">
+            <InputPassword @bind-Value="@context.Password" />
+        </FormItem>
+        <FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+            <Checkbox @bind-Value="context.RememberMe">Remember me</Checkbox>
+        </FormItem>
+        <FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+            <Button Type="@ButtonType.Primary" HtmlType="submit">
+                登录
+            </Button>
+        </FormItem>
+    </Form>
+@code
+{
+  public class Model
+  {
+    [Required]
+    public string Username { get; set; }
+
+    [Required]
+    public string Password { get; set; }
+    public bool RememberMe { get; set; } = true;
+  }
+
+  private LoginDto model = new LoginDto();
+
+  private async Task OnFinish(EditContext editContext)
+  {
+    var rtn = await AccountService.Login(model.UserName, model.Password);
+    if (rtn.IsSuccess)
+    {
+      await _message.Success("登录成功");
+      _navigationManager.NavigateTo("/");
+
+    }
+    else
+    {
+      await _message.Error(rtn.Message);
+    }
+
+    Console.WriteLine($"Success:{JsonSerializer.Serialize(rtn)}");
+  }
+
+  private void OnFinishFailed(EditContext editContext)
+  {
+    Console.WriteLine($"Failed:{JsonSerializer.Serialize(model)}");
+  }
+}

@@ -1,0 +1,12 @@
+Worker/bin
+Worker/obj
+Wings.Saas/bin
+Wings.Saas/obj
+Wings.Saas/node_modules
+Wings.Saas/Server/bin
+Wings.Saas/Server/obj
+Wings.Saas/Client/bin
+Wings.Saas/Client/obj
+Wings.Saas/Ocr/bin
+Wings.Saas/Ocr/obj
+

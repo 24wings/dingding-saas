@@ -1,0 +1,116 @@
+@page "/Worker/ScanTask"
+@using Wings.Saas.Shared.Areas.Worker.Dtos;
+@using Wings.Saas.Shared.Areas.Worker.Services;
+@using System.ComponentModel
+@inject MessageService _messageService
+
+@inject WorkerService _workerService
+
+
+<div>
+  <Button Type="primary" OnClick="()=>scanTaskCreateOrderEditModal.Show()">新增任务</Button>
+</div>
+ 
+<Table 
+       DataSource="@scanTasks"
+       Total="_total"
+       @bind-PageIndex="_pageIndex"
+       @bind-PageSize="_pageSize"
+       OnPageIndexChange="async e=>await fetchData()"
+       @bind-SelectedRows="selectedRows">
+    <Selection Key="@(context.Id.ToString())" />
+    <Column @bind-Field="@context.Id"/>
+    <Column @bind-Field="@context.Start">
+    </Column>
+    <Column @bind-Field="@context.End" />
+    <Column  @bind-Field="@context.TaskName" />
+    <ActionColumn Title="Acton">
+        <Space Size="middle">
+            <SpaceItem>
+                <a @onclick="()=>Start(context.Id)">重置队列</a>
+            </SpaceItem>
+            <SpaceItem>
+                <a @onclick="()=>Detail(context)">查看队列</a>
+            </SpaceItem>
+            <SpaceItem>
+                <a @onclick="() => scanTaskCreateOrderEditModal.Show(context)">Edit</a>
+            </SpaceItem>
+            <SpaceItem>
+                <a @onclick="() => Remove(context.Id)">Delete</a>
+            </SpaceItem>
+        </Space>
+    </ActionColumn>
+</Table>
+
+<Modal Title="@("任务进度")"
+       Visible="@Active"
+       OnOk="@Close"
+       OnCancel="@Close">
+    
+    <h4>队列数量:@currentTask</h4>
+</Modal>
+
+<ScanTaskCreateOrEditModal @ref="scanTaskCreateOrderEditModal" OnSave="()=>fetchData()"></ScanTaskCreateOrEditModal>
+
+  
+@code {
+    public bool Active { get; set; }
+    public long currentTask { get; set; }
+    List<ScanTaskOutput> scanTasks = new List<ScanTaskOutput>();
+
+    IEnumerable<ScanTaskOutput> selectedRows;
+    public ScanTaskCreateOrEditModal scanTaskCreateOrderEditModal { get; set; }
+    int _pageIndex = 1;
+    int _pageSize = 10;
+    int _total = 0;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var rtn = await _workerService.Load();
+        Console.WriteLine(rtn);
+        scanTasks = rtn.Result;
+        _total = scanTasks.Count;
+    }
+
+    async Task fetchData()
+    {
+        var rtn = await _workerService.Load();
+
+        scanTasks = rtn.Result;
+
+    }
+
+    async Task Remove(int id)
+    {
+
+        await _workerService.Remove(id);
+        await fetchData();
+    }
+
+
+    async Task Start(int id)
+    {
+        await _workerService.Start(id);
+    }
+
+    async Task Detail(ScanTaskOutput input)
+    {
+        var currentTaskNum= await _workerService.Detail(input);
+        currentTask = currentTaskNum.Result;
+        Console.WriteLine(currentTaskNum);
+        Active = true;
+
+    }
+
+    public void Close()
+    {
+        Active = false;
+    }
+
+
+
+
+
+
+
+}

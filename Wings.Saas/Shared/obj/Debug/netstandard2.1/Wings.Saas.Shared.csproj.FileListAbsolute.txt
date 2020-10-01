@@ -1,0 +1,9 @@
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/bin/Debug/netstandard2.1/Wings.Saas.Shared.deps.json
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/bin/Debug/netstandard2.1/Wings.Saas.Shared.dll
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/bin/Debug/netstandard2.1/Wings.Saas.Shared.pdb
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.csprojAssemblyReference.cache
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.AssemblyInfoInputs.cache
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.AssemblyInfo.cs
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.csproj.CoreCompileInputs.cache
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.dll
+/Users/wutong/Downloads/dingding-saas/Wings.Saas/Shared/obj/Debug/netstandard2.1/Wings.Saas.Shared.pdb

@@ -1,0 +1,115 @@
+@using Wings.Saas.Shared.Areas.Worker.Dtos
+@using  Wings.Saas.Shared.Areas.Worker.Services
+@inject MessageService _message
+@inject WorkerService _workerService
+
+
+@if (Active)
+{
+    <Modal Title="title"
+           Visible="@Active"
+           OnOk="@Submit"
+           OnCancel="@Close">
+        <Form Model="@ScanTask" @ref="submitForm"
+              LabelCol="new ColLayoutParam { Span = 8 }"
+              WrapperCol="new ColLayoutParam { Span = 16 }">
+            <FormItem Label="Start">
+                <Input @bind-Value="@context.Start" />
+            </FormItem>
+            <FormItem Label="End">
+                <Input @bind-Value="@context.End" />
+            </FormItem>
+            <FormItem Label="TaskName">
+                <Input @bind-Value="@context.TaskName" />
+            </FormItem>
+            @*<FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+                    <Button Type="@ButtonType.Primary" HtmlType="submit">
+                        Submit
+                    </Button>
+                </FormItem>*@
+            
+
+        </Form>
+    </Modal>
+}
+@code{
+    public ScanTaskOutput ScanTask { get; set; }
+
+    private int? Id { get; set; }
+    public bool Active { get; set; } = false;
+    string title = "Create-Scan-Task";
+    bool _visible = false;
+    public Form<ScanTaskOutput> submitForm { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnSave { get; set; }
+
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+
+    public void Show(ScanTaskOutput scanTask = null)
+    {
+        // create
+        if (scanTask == null)
+        {
+            
+            ScanTask = new ScanTaskOutput();
+
+            Active = true;
+        }
+
+        else
+        {
+            Id = scanTask.Id;
+            ScanTask = scanTask;
+            Active = true;
+
+        }
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        Active = false;
+        StateHasChanged();
+    }
+
+    public async Task Submit()
+    {
+        if (submitForm.Validate())
+        {
+            if (Id == null)
+            {
+
+
+                var rtn = await _workerService.Add(ScanTask);
+                if (rtn.IsSuccess)
+                {
+                    _message.Success("Ìí¼Ó³É¹¦");
+                    await OnSave.InvokeAsync(true);
+                    Active = false;
+
+                }
+            }
+            else
+            {
+                await _workerService.Update(ScanTask);
+                await OnSave.InvokeAsync(true);
+                Active = false;
+            }
+
+        }
+        else
+        {
+
+        }
+
+    }
+}
+
+
+
+

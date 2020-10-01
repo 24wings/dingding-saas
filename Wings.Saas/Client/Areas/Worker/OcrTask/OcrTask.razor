@@ -1,0 +1,82 @@
+﻿@page "/Worker/OcrTask"
+@using Wings.Saas.Shared.Areas.Worker.Dtos;
+@using Wings.Saas.Shared.Areas.Worker.Services;
+@using System.ComponentModel
+@using Wings.Saas.Client.Areas.Worker.OcrTask
+@using Wings.Saas.Client.Areas.Worker.ScanTask
+@inject MessageService _messageService
+
+@inject OcrTaskService _ocrTaskService
+
+
+<div>
+    <Button Type="primary" OnClick="()=>ocrTaskCreateOrderEditModal.Show()">新增Ocr任务</Button>
+</div>
+
+<Table DataSource="@scanTasks"
+       Total="_total"
+       @bind-PageIndex="_pageIndex"
+       @bind-PageSize="_pageSize"
+       OnPageIndexChange="async e=>await fetchData()"
+       @bind-SelectedRows="selectedRows">
+    <Selection Key="@(context.Id.ToString())" />
+    <Column @bind-Field="@context.Id" />
+    <Column @bind-Field="@context.Start">
+    </Column>
+    <Column @bind-Field="@context.End" />
+    <Column @bind-Field="@context.TaskName" />
+    <Column @bind-Field="@context.Key" />
+    <Column @bind-Field="@context.Secret" />
+    <ActionColumn Title="Acton">
+        <Space Size="middle">
+            <SpaceItem>
+                <a @onclick="()=>ocrTaskCreateOrderEditModal.Show(context)">编辑</a>
+            </SpaceItem>
+            <SpaceItem>
+                <a @onclick="()=>Remove(context.Id)">删除</a>
+            </SpaceItem>
+        </Space>
+    </ActionColumn>
+</Table>
+
+
+<OcrTaskCreateOrEditModal @ref="ocrTaskCreateOrderEditModal" OnSave="()=>fetchData()"></OcrTaskCreateOrEditModal>
+
+
+@code {
+    List<OcrTaskOutput> scanTasks = new List<OcrTaskOutput>();
+
+    IEnumerable<OcrTaskOutput> selectedRows;
+    public OcrTaskCreateOrEditModal ocrTaskCreateOrderEditModal { get; set; }
+    int _pageIndex = 1;
+    int _pageSize = 10;
+    int _total = 0;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var rtn = await _ocrTaskService.Load();
+        scanTasks = rtn.Result;
+        _total = scanTasks.Count;
+    }
+
+    async Task fetchData()
+    {
+        var rtn = await _ocrTaskService.Load();
+
+        scanTasks = rtn.Result;
+
+    }
+
+    async Task Remove(int id)
+    {
+
+        await _ocrTaskService.Remove(id);
+        await fetchData();
+    }
+
+
+
+
+
+
+}

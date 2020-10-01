@@ -1,0 +1,28 @@
+
+
+@inherits LayoutComponentBase
+
+
+<div class="container">
+  <pro-langs class="langs" btnClass></pro-langs>
+  <div class="wrap">
+    <div class="top">
+      <div class="head">
+        <img class="logo" src="./assets/logo-color.svg">
+        <span class="title">电商供应链系统</span>
+      </div>
+      <div class="desc">高效、便捷的电商供应链解决方案</div>
+    </div>
+    <div *ngIf="showTenantChange()">
+      <app-tenant-change></app-tenant-change>
+    </div>
+    @Body
+    <global-footer [links]="links">
+      Copyright
+      <i nz-icon nzType="copyright"></i>
+      2020
+      <a href="//shop.fotaboss.com" target="_blank">深移联科技</a>
+      出品
+    </global-footer>
+  </div>
+</div>

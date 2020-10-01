@@ -1,0 +1,81 @@
+﻿@page "/Worker/KeySecrets"
+@using Wings.Saas.Shared.Areas.Worker.Dtos;
+@using Wings.Saas.Shared.Areas.Worker.Services;
+@using System.ComponentModel
+@using Wings.Saas.Client.Areas.Worker.OcrTask
+@using Wings.Saas.Client.Areas.Worker.ScanTask
+@inject MessageService _messageService
+
+@inject KeySecretService _keySecretService
+
+
+<div>
+    <Button Type="primary" OnClick="()=>createOrEditKeySecretModal.Show()">新增秘钥</Button>
+</div>
+
+<Table DataSource="@keySecrets"
+       Total="_total"
+       @bind-PageIndex="_pageIndex"
+       @bind-PageSize="_pageSize"
+       OnPageIndexChange="async e=>await fetchData()"
+       @bind-SelectedRows="selectedRows">
+    <Selection Key="@(context.Id.ToString())" />
+    <Column @bind-Field="@context.AccountName" />
+    <Column @bind-Field="@context.AccountPassword" />
+    <Column @bind-Field="@context.Key" />
+    <Column @bind-Field="@context.Secret">
+    </Column>
+  
+    <ActionColumn Title="Acton">
+        <Space Size="middle">
+            <SpaceItem>
+                <a @onclick="()=>createOrEditKeySecretModal.Show(context)">编辑</a>
+            </SpaceItem>
+            <SpaceItem>
+                <a @onclick="()=>Remove(context.Id)">删除</a>
+            </SpaceItem>
+        </Space>
+    </ActionColumn>
+</Table>
+
+
+<CreateOrEditKeySecretModal @ref="createOrEditKeySecretModal" OnSave="()=>fetchData()"></CreateOrEditKeySecretModal>
+
+
+@code {
+    List<KeySecretOutput> keySecrets = new List<KeySecretOutput>();
+
+    IEnumerable<KeySecretOutput> selectedRows;
+    public CreateOrEditKeySecretModal createOrEditKeySecretModal { get; set; }
+    int _pageIndex = 1;
+    int _pageSize = 10;
+    int _total = 0;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var rtn = await _keySecretService.Load();
+        keySecrets = rtn.Result;
+        _total = keySecrets.Count;
+    }
+
+    async Task fetchData()
+    {
+        var rtn = await _keySecretService.Load();
+        keySecrets = rtn.Result;
+        _total = keySecrets.Count;
+
+    }
+
+    async Task Remove(int id)
+    {
+
+        await _keySecretService.Remove(id);
+        await fetchData();
+    }
+
+
+
+
+
+
+}

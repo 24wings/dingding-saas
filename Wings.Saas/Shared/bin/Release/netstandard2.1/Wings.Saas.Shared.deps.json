@@ -1,0 +1,58 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "Wings.Saas.Shared/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.ComponentModel.Annotations": "5.0.0-preview.6.20305.6"
+        },
+        "runtime": {
+          "Wings.Saas.Shared.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "System.ComponentModel.Annotations/5.0.0-preview.6.20305.6": {
+        "runtime": {
+          "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.30506"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Wings.Saas.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/5.0.0-preview.6.20305.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0GeGv6Anopqoi78RgVYy/s3fLCOl2er7kMKQgZ9gQmg1qWPSPjGrmwA776Xe8eH9NRXjLcMi5NWxyNMeQ4n08w==",
+      "path": "system.componentmodel.annotations/5.0.0-preview.6.20305.6",
+      "hashPath": "system.componentmodel.annotations.5.0.0-preview.6.20305.6.nupkg.sha512"
+    }
+  }
+}

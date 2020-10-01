@@ -1,0 +1,124 @@
+﻿@using Wings.Saas.Shared.Areas.Worker.Dtos
+@using  Wings.Saas.Shared.Areas.Worker.Services
+@inject MessageService _message
+@inject OcrTaskService _ocrTaskService
+
+
+@if (Active)
+{
+    <Modal Title="title"
+           Visible="@Active"
+           OnOk="@Submit"
+           OnCancel="@Close">
+        <Form Model="@OcrTask" @ref="submitForm"
+              LabelCol="new ColLayoutParam { Span = 8 }"
+              WrapperCol="new ColLayoutParam { Span = 16 }">
+            <FormItem Label="开始">
+                <Input @bind-Value="@context.Start" />
+            </FormItem>
+            <FormItem Label="结束">
+                <Input @bind-Value="@context.End" />
+            </FormItem>
+            <FormItem Label="任务名">
+                <Input @bind-Value="@context.TaskName" />
+            </FormItem>
+
+            <FormItem Label="Key">
+                <Input @bind-Value="@context.Key" />
+            </FormItem>
+            <FormItem Label="Secret">
+                <Input @bind-Value="@context.Secret" />
+            </FormItem>
+
+
+            @*<FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+            <Button Type="@ButtonType.Primary" HtmlType="submit">
+                Submit
+            </Button>
+        </FormItem>*@
+
+
+        </Form>
+    </Modal>
+}
+@code{
+    public OcrTaskOutput OcrTask { get; set; }
+
+    private int? Id { get; set; }
+    public bool Active { get; set; } = false;
+    string title = "Create-Ocr-Task";
+    bool _visible = false;
+    public Form<OcrTaskOutput> submitForm { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnSave { get; set; }
+
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+
+    public void Show(OcrTaskOutput ocrTask = null)
+    {
+        // create
+        if (ocrTask == null)
+        {
+
+            OcrTask = new OcrTaskOutput();
+
+            Active = true;
+        }
+
+        else
+        {
+            Id = ocrTask.Id;
+            OcrTask = ocrTask;
+            Active = true;
+
+        }
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        Active = false;
+        StateHasChanged();
+    }
+
+    public async Task Submit()
+    {
+        if (submitForm.Validate())
+        {
+            if (Id == null)
+            {
+
+
+                var rtn = await _ocrTaskService.Add(OcrTask);
+                if (rtn.IsSuccess)
+                {
+                    _message.Success("添加成功");
+                    await OnSave.InvokeAsync(true);
+                    Active = false;
+
+                }
+            }
+            else
+            {
+                await _ocrTaskService.Update(OcrTask);
+                await OnSave.InvokeAsync(true);
+                Active = false;
+            }
+
+        }
+        else
+        {
+
+        }
+
+    }
+}
+
+
+
+
