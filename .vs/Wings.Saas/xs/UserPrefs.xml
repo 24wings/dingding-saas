@@ -1,38 +1,25 @@
 ﻿<Properties StartupConfiguration="{19ED85BB-9C4B-4C27-88A6-A8D231777A14}|Default">
   <MonoDevelop.Ide.ItemProperties.Ocr PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Ocr/Program.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Wings.Saas/Server/Startup.cs" Line="45" Column="135" />
+      <File FileName="Ocr/DbContext.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="Wings.Saas/Server/Startup.cs" Line="17" Column="6" />
       <File FileName="Wings.Saas/Server/Program.cs" />
       <File FileName="Wings.Saas/Server/Wings.Saas.Server.csproj" />
       <File FileName="Wings.Saas/Server/Areas/Worker/ScanTaskController.cs" />
       <File FileName="Wings.Saas/Server/appsettings.json" />
       <File FileName="Wings.Saas/Server/appsettings.Development.json" />
-      <File FileName="Ocr/Program.cs" Line="178" Column="48" />
+      <File FileName="Ocr/Program.cs" />
       <File FileName="Worker/config.json" />
-      <File FileName="Worker/Capture.cs" />
-      <File FileName="Worker/Robot.cs" />
-      <File FileName="Worker/ScanWorker.cs" />
-      <File FileName="Worker/OssService.cs" />
-      <File FileName="Worker/Services/OssService.cs" />
-      <File FileName="Worker/AccessToken.cs" />
-      <File FileName="Ocr/Services/AccessToken.cs" />
-      <File FileName="Ocr/task1.json" />
-      <File FileName="Ocr/DbContext.cs" />
-      <File FileName="Ocr/Group.cs" />
-      <File FileName="Wings.Saas/Server/Services/RedisService.cs" />
-      <File FileName="Wings.Saas/Server/Services/ScanTaskService.cs" />
-      <File FileName="Ocr/Readme.md" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Wings.Saas" expanded="True" selected="True">
-            <Node name="Ocr" expanded="True">
-              <Node name="Services" expanded="True" />
-            </Node>
+          <Node name="Wings.Saas" expanded="True">
+            <Node name="Ocr" expanded="True" />
             <Node name="Wings.Saas.Server" expanded="True">
-              <Node name="Services" expanded="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -45,10 +32,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/wutong/Downloads/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="86" column="1" />
-      <Breakpoint file="/Users/wutong/Downloads/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="182" column="1" />
-      <Breakpoint file="/Users/wutong/Downloads/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="173" column="1" />
-      <Breakpoint file="/Users/wutong/Downloads/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="180" column="1" />
+      <Breakpoint file="/Users/wutong/Documents/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="86" column="1" />
+      <Breakpoint file="/Users/wutong/Documents/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="182" column="1" />
+      <Breakpoint file="/Users/wutong/Documents/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="173" column="1" />
+      <Breakpoint file="/Users/wutong/Documents/dingding-saas/Ocr/Program.cs" relfile="Ocr/Program.cs" line="180" column="1" />
+      <Breakpoint file="/Users/wutong/Documents/dingding-saas/Ocr/3100-3200/3100--3150/task/task9.json" relfile="Ocr/3100-3200/3100--3150/task/task9.json" line="9" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

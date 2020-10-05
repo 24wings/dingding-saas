@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "f5aR2zHTWZ+Lby0sdP9VgaJ4JURoq+nrkX+/RJ7LNogT3Xy90wRFJ4D3QGz8Ydl2vHqWe4R4nkaDlL43ChK2xQ==",
+  "dgSpecHash": "uImMIUt5ALCB+iupk8IlCdbIi6NvfNC3tY/buh8Q/50WwZHbu4A7vaQV5brsiBCcUITLHyKSiDSYU/G7XCP1OQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\Wings.Saas.Shared.csproj",
+  "projectFilePath": "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/Wings.Saas.Shared.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\21217\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\21217\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0-preview.6.20305.6\\system.componentmodel.annotations.5.0.0-preview.6.20305.6.nupkg.sha512"
+    "/Users/wutong/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/wutong/.nuget/packages/system.componentmodel.annotations/5.0.0-preview.6.20305.6/system.componentmodel.annotations.5.0.0-preview.6.20305.6.nupkg.sha512"
   ],
   "logs": []
 }

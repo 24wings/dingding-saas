@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\Wings.Saas.Shared.csproj": {}
+    "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/Wings.Saas.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\Wings.Saas.Shared.csproj": {
+    "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/Wings.Saas.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\Wings.Saas.Shared.csproj",
+        "projectUniqueName": "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/Wings.Saas.Shared.csproj",
         "projectName": "Wings.Saas.Shared",
-        "projectPath": "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\Wings.Saas.Shared.csproj",
-        "packagesPath": "C:\\Users\\21217\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\21217\\Documents\\code\\dingding-saas\\Wings.Saas\\Shared\\obj\\",
+        "projectPath": "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/Wings.Saas.Shared.csproj",
+        "packagesPath": "/Users/wutong/.nuget/packages/",
+        "outputPath": "/Users/wutong/Documents/dingding-saas/Wings.Saas/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\21217\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/wutong/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }
